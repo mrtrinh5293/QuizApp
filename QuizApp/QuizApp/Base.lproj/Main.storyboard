@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oSo-vX-mRJ">
-                                        <rect key="frame" x="20" y="0.0" width="374" height="431"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="431"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -42,7 +42,7 @@
                                                             <rect key="frame" x="20" y="0.0" width="374" height="80.5"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9qJ-EV-2UA">
-                                                                    <rect key="frame" x="30" y="30" width="324" height="20.5"/>
+                                                                    <rect key="frame" x="20" y="30" width="354" height="20.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -52,8 +52,8 @@
                                                             <constraints>
                                                                 <constraint firstAttribute="bottom" secondItem="9qJ-EV-2UA" secondAttribute="bottom" constant="30" id="3N7-8L-UJo"/>
                                                                 <constraint firstItem="9qJ-EV-2UA" firstAttribute="top" secondItem="PfT-nH-Tsg" secondAttribute="top" constant="30" id="5Io-rr-ZPK"/>
-                                                                <constraint firstItem="9qJ-EV-2UA" firstAttribute="leading" secondItem="PfT-nH-Tsg" secondAttribute="leading" constant="30" id="Qak-88-mOD"/>
-                                                                <constraint firstAttribute="trailing" secondItem="9qJ-EV-2UA" secondAttribute="trailing" constant="20" symbolic="YES" id="eLh-sf-k6G"/>
+                                                                <constraint firstItem="9qJ-EV-2UA" firstAttribute="leading" secondItem="PfT-nH-Tsg" secondAttribute="leading" constant="20" id="Qak-88-mOD"/>
+                                                                <constraint firstAttribute="trailing" secondItem="9qJ-EV-2UA" secondAttribute="trailing" id="eLh-sf-k6G"/>
                                                             </constraints>
                                                         </view>
                                                     </subviews>
@@ -70,7 +70,7 @@
                                     </tableView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="oSo-vX-mRJ" firstAttribute="width" secondItem="kwm-cn-hnR" secondAttribute="width" constant="-40" id="inU-DN-h6J"/>
+                                    <constraint firstItem="oSo-vX-mRJ" firstAttribute="width" secondItem="kwm-cn-hnR" secondAttribute="width" id="inU-DN-h6J"/>
                                     <constraint firstItem="nbh-bl-uty" firstAttribute="width" secondItem="kwm-cn-hnR" secondAttribute="width" id="p1X-bm-Iki"/>
                                 </constraints>
                             </stackView>
