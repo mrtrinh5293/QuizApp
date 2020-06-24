@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol ResultViewControllerProtocol {
+protocol ResultViewControllerProtocol: AnyObject {
     func dialogDismissed()
 }
 
@@ -29,7 +29,7 @@ class ResultViewController: UIViewController {
     var buttonText = ""
     
     
-    var delegate:ResultViewControllerProtocol?
+    weak var delegate:ResultViewControllerProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +39,7 @@ class ResultViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
+        super.viewWillAppear(animated)
         
         
         // Now that the elements have loaded, set the text
@@ -55,12 +55,14 @@ class ResultViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         UIView.animate(withDuration: 0.6, delay: 0, options: .curveEaseOut, animations: {
+            [weak self] in
             
-            self.dimView.alpha = 1
-            self.titleLabel.alpha = 1
-            self.feedbackLabel.alpha = 1
-            self.dismissButton.alpha = 1
+            self?.dimView.alpha = 1
+            self?.titleLabel.alpha = 1
+            self?.feedbackLabel.alpha = 1
+            self?.dismissButton.alpha = 1
         }, completion: nil)
     }
     
@@ -68,7 +70,8 @@ class ResultViewController: UIViewController {
     @IBAction func dismissTapped(_ sender: Any) {
         
         UIView.animate(withDuration: 0.4, delay: 0, options: .curveEaseOut, animations: {
-            self.dimView.alpha = 0
+            [weak self] in
+            self?.dimView.alpha = 0
         }) { (completed) in
             // Dismiss the popup
             self.dismiss(animated: true, completion: nil)

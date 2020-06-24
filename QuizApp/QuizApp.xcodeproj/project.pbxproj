@@ -15,7 +15,6 @@
 		834A389E23200BC900E0C767 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 834A389C23200BC900E0C767 /* LaunchScreen.storyboard */; };
 		834A38A623200BE100E0C767 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834A38A523200BE100E0C767 /* Question.swift */; };
 		834A38A823200C5300E0C767 /* QuizModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834A38A723200C5300E0C767 /* QuizModel.swift */; };
-		834A38AE232046EC00E0C767 /* QuestionData.json in Resources */ = {isa = PBXBuildFile; fileRef = 834A38AD232046EC00E0C767 /* QuestionData.json */; };
 		834A38B023219F8200E0C767 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834A38AF23219F8200E0C767 /* ResultViewController.swift */; };
 		937BE7E0249D06C6004E53C0 /* StateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937BE7DF249D06C6004E53C0 /* StateManager.swift */; };
 /* End PBXBuildFile section */
@@ -31,7 +30,6 @@
 		834A389F23200BC900E0C767 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		834A38A523200BE100E0C767 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		834A38A723200C5300E0C767 /* QuizModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizModel.swift; sourceTree = "<group>"; };
-		834A38AD232046EC00E0C767 /* QuestionData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = QuestionData.json; sourceTree = "<group>"; };
 		834A38AF23219F8200E0C767 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		937BE7DF249D06C6004E53C0 /* StateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -73,7 +71,6 @@
 				937BE7DF249D06C6004E53C0 /* StateManager.swift */,
 				834A38A523200BE100E0C767 /* Question.swift */,
 				834A38A723200C5300E0C767 /* QuizModel.swift */,
-				834A38AD232046EC00E0C767 /* QuestionData.json */,
 				834A389723200BC800E0C767 /* Main.storyboard */,
 				834A389A23200BC900E0C767 /* Assets.xcassets */,
 				834A389C23200BC900E0C767 /* LaunchScreen.storyboard */,
@@ -143,7 +140,6 @@
 				834A389E23200BC900E0C767 /* LaunchScreen.storyboard in Resources */,
 				834A389B23200BC900E0C767 /* Assets.xcassets in Resources */,
 				834A389923200BC800E0C767 /* Main.storyboard in Resources */,
-				834A38AE232046EC00E0C767 /* QuestionData.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

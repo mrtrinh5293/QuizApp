@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, QuizProtocol, UITableViewDelegate, UITableViewDataSource, ResultViewControllerProtocol {
+class QuizViewController: UIViewController {
     
     @IBOutlet weak var questionLabel: UILabel!
     
@@ -20,8 +20,7 @@ class ViewController: UIViewController, QuizProtocol, UITableViewDelegate, UITab
     
     @IBOutlet weak var rootStackView: UIStackView!
     
-    
-    
+
     var model = QuizModel()
     var questions = [Question]()
     var currentQuestionIndex = 0
@@ -52,7 +51,7 @@ class ViewController: UIViewController, QuizProtocol, UITableViewDelegate, UITab
         model.getQuestions()
     }
     
-    func slideInQuestion() {
+    private func slideInQuestion() {
         // Set initial state
         stackViewTrailingConstraint.constant = -1000
         stackViewLeadingConstraint.constant = 1000
@@ -61,16 +60,18 @@ class ViewController: UIViewController, QuizProtocol, UITableViewDelegate, UITab
         
         // Animate it to the end state
         UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
+            // using Async process callback should check existing of self, so we usually use weak self to prevent memory leak
+            [weak self] in
             // start off from right hand side -> trailing negative number, leading -> positive number
-            self.stackViewTrailingConstraint.constant = 0
-            self.stackViewLeadingConstraint.constant = 0
-            self.rootStackView.alpha = 1
-            self.view.layoutIfNeeded()
-        }, completion: nil)
+            self?.stackViewTrailingConstraint.constant = 0
+            self?.stackViewLeadingConstraint.constant = 0
+            self?.rootStackView.alpha = 1
+            self?.view.layoutIfNeeded()
+        })
         
     }
     
-    func slideOutQuestion() {
+    private func slideOutQuestion() {
         // Set initial state
         stackViewTrailingConstraint.constant = 0
         stackViewLeadingConstraint.constant = 0
@@ -79,11 +80,13 @@ class ViewController: UIViewController, QuizProtocol, UITableViewDelegate, UITab
         
         // Animate it to the end state
         UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
-            self.stackViewLeadingConstraint.constant = -1000
-            self.stackViewTrailingConstraint.constant = 1000
-            self.rootStackView.alpha = 0
-            self.view.layoutIfNeeded()
-        }, completion: nil)
+            // using Async process callback should check existing of self, so we usually use weak self to prevent memory leak
+            [weak self] in
+            self?.stackViewLeadingConstraint.constant = -1000
+            self?.stackViewTrailingConstraint.constant = 1000
+            self?.rootStackView.alpha = 0
+            self?.view.layoutIfNeeded()
+        })
         
     }
     
@@ -103,31 +106,12 @@ class ViewController: UIViewController, QuizProtocol, UITableViewDelegate, UITab
         slideInQuestion()
     }
     
-    // MARK: - QuizProtocol Methods
     
-    func questionsRetrieved(_ questions: [Question]) {
-        
-        // Get a reference to the questions
-        self.questions = questions
-        
-        // Check if we should restore the state, before showing question #1
-        let savedIndex = StateManager.retrieveValue(key: StateManager.questionIndexKey) as? Int
-        
-        if savedIndex != nil && savedIndex! < self.questions.count {
-            currentQuestionIndex = savedIndex!
-            
-            let savedNumCorrect = StateManager.retrieveValue(key: StateManager.numCorrectKey) as? Int
-            
-            if savedNumCorrect != nil {
-                numCorrect = savedNumCorrect!
-            }
-        }
-        // Display the first question
-        displayQuestion()
-    }
     
+}
+
+extension QuizViewController: UITableViewDelegate, UITableViewDataSource {
     // MARK: - UITableView Delegate Methods
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         // Make sure that the questions array actually contains at least a question
@@ -206,6 +190,31 @@ class ViewController: UIViewController, QuizProtocol, UITableViewDelegate, UITab
             }
         }
     }
+}
+
+extension QuizViewController: QuizProtocol, ResultViewControllerProtocol {
+    // MARK: - QuizProtocol Methods
+    
+    func questionsRetrieved(_ questions: [Question]) {
+        
+        // Get a reference to the questions
+        self.questions = questions
+        
+        // Check if we should restore the state, before showing question #1
+        let savedIndex = StateManager.retrieveValue(key: StateManager.questionIndexKey) as? Int
+        
+        if savedIndex != nil && savedIndex! < self.questions.count {
+            currentQuestionIndex = savedIndex!
+            
+            let savedNumCorrect = StateManager.retrieveValue(key: StateManager.numCorrectKey) as? Int
+            
+            if savedNumCorrect != nil {
+                numCorrect = savedNumCorrect!
+            }
+        }
+        // Display the first question
+        displayQuestion()
+    }
     
     // MARK: - ResultViewControllerProtocol Methods
     
@@ -246,4 +255,3 @@ class ViewController: UIViewController, QuizProtocol, UITableViewDelegate, UITab
         }
     }
 }
-
